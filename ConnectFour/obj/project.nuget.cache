@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "xOxBUrz2obMXTjKTCZRbizp8wg/CEADg14sBOYxXG4iyq7D/k4J0tZBW4Kx1xPPT8fLlNbvkwRZq0HRP+vIPQw==",
+  "dgSpecHash": "w/RkBdE2Lm4xqEHE0b7cNWyrpITSNrJtG546r0H8nqU/rwSJi4QAxFeMICnQgifD09bpILcaTajpSVUjrZKHNg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Tom\\source\\repos\\ConnectFour\\ConnectFour\\ConnectFour.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\Tom\\Documents\\GitHub\\four-in-a-row\\ConnectFour\\ConnectFour.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Tom\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.14\\microsoft.windowsdesktop.app.ref.7.0.14.nupkg.sha512",
+    "C:\\Users\\Tom\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.14\\microsoft.netcore.app.ref.7.0.14.nupkg.sha512",
+    "C:\\Users\\Tom\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.14\\microsoft.aspnetcore.app.ref.7.0.14.nupkg.sha512",
+    "C:\\Users\\Tom\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\7.0.14\\microsoft.netcore.app.host.win-x64.7.0.14.nupkg.sha512"
+  ],
   "logs": []
 }
