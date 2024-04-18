@@ -13,9 +13,9 @@
                 <GradientStop Color="#FF7D1B94" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <Button x:Name="start_b" Content="Start" HorizontalAlignment="Center" Height="50" Margin="0,230,0,0" VerticalAlignment="Top" Width="180" Click="Button_Click"/>
-        <Button x:Name="instructions_b" Content="Instructions" HorizontalAlignment="Center" Height="50" Margin="0,300,0,0" VerticalAlignment="Top" Width="220" Click="Button_Click"/>
-        <Button x:Name="quit_b" Content="Quit" HorizontalAlignment="Center" Height="50" Margin="0,374,0,0" VerticalAlignment="Top" Width="180" Click="Button_Click"/>
+        <Button x:Name="start_b" Content="Start" HorizontalAlignment="Center" Height="50" Margin="0,230,0,0" VerticalAlignment="Top" Width="180" Click="Start_Click"/>
+        <Button x:Name="instructions_b" Content="Instructions" HorizontalAlignment="Center" Height="50" Margin="0,300,0,0" VerticalAlignment="Top" Width="220" Click="Inst_Click"/>
+        <Button x:Name="quit_b" Content="Quit" HorizontalAlignment="Center" Height="50" Margin="0,374,0,0" VerticalAlignment="Top" Width="180" Click="Quit_Click"/>
         <Image x:Name="Title_Name" Margin="218,49,218,222" Source="/Illustration3.png" Stretch="Fill"/>
 
     </Grid>

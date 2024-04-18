@@ -23,5 +23,10 @@ namespace ConnectFour
         {
             InitializeComponent();
         }
+
+        private void InitializeComponent()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

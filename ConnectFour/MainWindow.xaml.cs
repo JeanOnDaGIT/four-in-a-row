@@ -24,10 +24,20 @@ namespace ConnectFour
         {
             InitializeComponent();
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        // handling buttons that send the user to a new window or show instructions/quit out of the application - Tom
+        private void Start_Click(object sender, RoutedEventArgs e)
         {
+            Window Main = new MainGame();
+        }
 
+        private void Inst_Click(object sender, RoutedEventArgs e)
+        {
+            Window MainGame = new MainGame();
+        }
+
+        private void Quit_Click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Application.Current.Shutdown();
         }
 
     }
