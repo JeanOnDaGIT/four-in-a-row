@@ -17,11 +17,12 @@ namespace ConnectFour
     /// <summary>
     /// Interaction logic for Window1.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class MainGame : Window
     {
-        public Window1()
+        public MainGame()
         {
             InitializeComponent();
         }
+
     }
 }
