@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET7_0;NETCOREAPP
 C:\Users\Tom\Documents\GitHub\four-in-a-row\ConnectFour\App.xaml
-11407045341
+2-390938211
 
-5404224983
+61969182187
 1981477042709
-MainWindow.xaml;
+MainGame.xaml;MainWindow.xaml;
 
-False
+True
 
