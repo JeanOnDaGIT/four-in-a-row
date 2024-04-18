@@ -20,6 +20,3 @@ C:\Users\tl297\Source\Repos\four-in-a-row\ConnectFour\obj\Debug\net7.0-windows\r
 C:\Users\tl297\Source\Repos\four-in-a-row\ConnectFour\obj\Debug\net7.0-windows\ConnectFour.pdb
 C:\Users\tl297\Source\Repos\four-in-a-row\ConnectFour\obj\Debug\net7.0-windows\ConnectFour.genruntimeconfig.cache
 C:\Users\tl297\Source\Repos\four-in-a-row\ConnectFour\obj\Debug\net7.0-windows\ref\ConnectFour.dll
-C:\Users\Tom\Documents\GitHub\four-in-a-row\ConnectFour\obj\Debug\net7.0-windows\ConnectFour.dll
-C:\Users\Tom\Documents\GitHub\four-in-a-row\ConnectFour\obj\Debug\net7.0-windows\refint\ConnectFour.dll
-C:\Users\Tom\Documents\GitHub\four-in-a-row\ConnectFour\obj\Debug\net7.0-windows\ConnectFour.pdb
