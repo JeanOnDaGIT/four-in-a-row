@@ -14,15 +14,24 @@ using System.Windows.Shapes;
 
 namespace ConnectFour
 {
-    /// <summary>
-    /// Interaction logic for Window1.xaml
-    /// </summary>
     public partial class MainGame : Window
     {
         public MainGame()
         {
             InitializeComponent();
-        }
 
+            // Button loop to generate the grid
+            for (int row = 0; row < 6; row++)
+            {
+                for (int col = 0; col < 7; col++)
+                {
+                    Button button = new Button();
+                    button.Content = $"Cell ({row},{col})";
+                    Grid.SetRow(button, row);
+                    Grid.SetColumn(button, col);
+                    gameGrid.Children.Add(button);
+                }
+            }
+        }
     }
 }

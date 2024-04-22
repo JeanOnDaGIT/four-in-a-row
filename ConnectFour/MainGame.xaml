@@ -7,19 +7,30 @@
         mc:Ignorable="d"
         Title="MainGame" Height="450" Width="800">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="0*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0*"/>
-        </Grid.ColumnDefinitions>
+        <Grid x:Name="gameGrid" Margin="335,11,21,10">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+        </Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                 <GradientStop Color="#FF3F0C58" Offset="0.497"/>
                 <GradientStop Color="#FF7D1B94" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <Image Height="100" Width="100" Margin="69,92,-169,-192" Source="/SAMPLE.png"/>
-        <Image Height="100" Width="100" Margin="69,217,-169,-317" Source="/SAMPLE.png"/>
     </Grid>
 </Window>
