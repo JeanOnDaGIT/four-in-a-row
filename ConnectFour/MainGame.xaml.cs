@@ -49,11 +49,11 @@ public partial class MainGame
 
         if (row == -1)
         {
-            // Column is full, exit
+            //If the column is full, you can't place anymore in that column.
             return;
         }
 
-        // Check if the clicked button is already colored
+        //This is to check if the clicked button is already colored
         if (_gameBoard[row, column] != Player.None)
         {
             row = GetLowestEmptyRow(column);
@@ -63,13 +63,11 @@ public partial class MainGame
             }
         }
 
-        // Color the button at the found row and column
+        //variable to set the colour for each player, red and blue
         var colorBrush = _currentPlayerIsRed ? Brushes.Red : Brushes.Blue;
 
 
-        // Update the game board state
-
-
+        //This updates the game's state, making sure the lowest empty row is checked aswell.
         var lowestButton = gameGrid.Children
             .OfType<Button>()
             .FirstOrDefault(b => Grid.GetRow(b) == GetLowestEmptyRow(column) && Grid.GetColumn(b) == column);
@@ -80,30 +78,27 @@ public partial class MainGame
             _gameBoard[GetLowestEmptyRow(column), column] = _currentPlayerIsRed ? Player.Red : Player.Blue;
         }
 
+        //Below this is all checks for win conditions, it's quite long aswell.
         if (CheckForConnectFourVertically(row, column))
         {
             Console.WriteLine("Connect Four vertically!");
         }
 
-        // Check for Connect Four horizontally
         if (CheckForConnectFourHorizontally(row, column))
         {
             Console.WriteLine("Connect Four horizontally!");
-            // Implement your logic for when a player wins horizontally
         }
 
-        // Check for Connect Four diagonally
         if (CheckForConnectFourDiagonally(row, column))
         {
             Console.WriteLine("Connect Four diagonally!");
-            // Implement your logic for when a player wins diagonally
         }
 
-        // Switch to the next player
+        //Switch to the next player
         _currentPlayerIsRed = !_currentPlayerIsRed;
     }
 
-    //for testing, this is a new function to test if the lowest row can be found in the column
+    //This function is what calcualates where the lowest empty row is in that column
     private int GetLowestEmptyRow(int columnIndex)
     {
         for (var row = _gameBoard.GetLength(0) - 1; row >= 0; row--)
@@ -113,17 +108,16 @@ public partial class MainGame
                 return row;
             }
         }
-
-        return -1; // Column is full
+        return -1; //the column is full
     }
 
-    // Function to check if there's a Connect Four vertically
+    //Function to check if the win condition has been achieved vertically
     private bool CheckForConnectFourVertically(int row, int column)
     {
         var currentPlayer = _currentPlayerIsRed ? Player.Red : Player.Blue;
         var count = 0;
 
-        // Check downwards
+        //Check downwards
         for (var i = row; i >= 0; i--)
         {
             if (_gameBoard[i, column] == currentPlayer)
@@ -140,7 +134,7 @@ public partial class MainGame
             }
         }
 
-        // Check upwards
+        //Check upwards
         for (var i = row + 1; i < 6; i++)
         {
             if (_gameBoard[i, column] == currentPlayer)
@@ -156,17 +150,16 @@ public partial class MainGame
                 break;
             }
         }
-
         return false;
     }
 
-    // Function to check if there's a Connect Four horizontally
+    //Function to check if the win condition has been achieved horizontally
     private bool CheckForConnectFourHorizontally(int row, int column)
     {
         var currentPlayer = _currentPlayerIsRed ? Player.Red : Player.Blue;
         var count = 0;
 
-        // Check to the left
+        //Check to the left
         for (var i = column; i >= 0; i--)
         {
             if (_gameBoard[row, i] == currentPlayer)
@@ -183,7 +176,7 @@ public partial class MainGame
             }
         }
 
-        // Check to the right
+        //Check to the right
         for (var i = column + 1; i < 7; i++)
         {
             if (_gameBoard[row, i] == currentPlayer)
@@ -199,24 +192,23 @@ public partial class MainGame
                 break;
             }
         }
-
         return false;
     }
 
-    // Function to check if there's a Connect Four diagonally
+    //Function to check if the win condition has been achieved diagonally
     private bool CheckForConnectFourDiagonally(int row, int column)
     {
         return CheckForConnectFourDiagonallyUpward(row, column) ||
                CheckForConnectFourDiagonallyDownward(row, column);
     }
 
-    // Function to check if there's a Connect Four diagonally upwards
+    //Function to check if its been won diagonally upwards
     private bool CheckForConnectFourDiagonallyUpward(int row, int column)
     {
         var currentPlayer = _currentPlayerIsRed ? Player.Red : Player.Blue;
         var count = 0;
 
-        // Check upwards diagonally
+        //Check upwards diagonally
         for (int i = row, j = column; i >= 0 && j >= 0; i--, j--)
         {
             if (_gameBoard[i, j] == currentPlayer)
@@ -233,7 +225,7 @@ public partial class MainGame
             }
         }
 
-        // Check downwards diagonally
+        //Check downwards diagonally
         for (int i = row + 1, j = column + 1; i < 6 && j < 7; i++, j++)
         {
             if (_gameBoard[i, j] == currentPlayer)
@@ -253,13 +245,13 @@ public partial class MainGame
         return false;
     }
 
-    // Function to check if there's a Connect Four diagonally downwards
+    //Function to check if its been won diagonallh downward
     private bool CheckForConnectFourDiagonallyDownward(int row, int column)
     {
         var currentPlayer = _currentPlayerIsRed ? Player.Red : Player.Blue;
         var count = 0;
 
-        // Check upwards diagonally
+        //Check upwards diagonally
         for (int i = row, j = column; i >= 0 && j < 7; i--, j++)
         {
             if (_gameBoard[i, j] == currentPlayer)
@@ -276,7 +268,7 @@ public partial class MainGame
             }
         }
 
-        // Check downwards diagonally
+        //Check downwards diagonally
         for (int i = row + 1, j = column - 1; i < 6 && j >= 0; i++, j--)
         {
             if (_gameBoard[i, j] == currentPlayer)
