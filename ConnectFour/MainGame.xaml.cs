@@ -1,78 +1,299 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
-namespace ConnectFour
+namespace ConnectFour;
+public partial class MainGame
 {
-    public partial class MainGame : Window
+    // enum used to store player states for when there is no player and for player 1 and 2
+    private enum Player
     {
-        public enum Player
-        {
-            None, Red, Blue
-        }
-        private bool currentPlayerIsRed = true;
-        private Player[,] gameBoard = new Player[6, 7];
-        public MainGame()
-        {
-            InitializeComponent();
+        None,
+        Red,
+        Blue
+    }
 
-            //Button loop to generate the grid
-            for (int row = 0; row < 6; row++)
+    private bool _currentPlayerIsRed = true;
+    private readonly Player[,] _gameBoard = new Player[6, 7];
+
+    public MainGame()
+    {
+        InitializeComponent();
+
+        //Button loop to generate the grid using 6 rows and 7 columns
+        for (var row = 0; row < 6; row++)
+        {
+            for (var col = 0; col < 7; col++)
             {
-                for (int col = 0; col < 7; col++)
-                {
-                    Button button = new Button();
-                    //button.Content = $"Cell ({row},{col})"; (This tells the user which column it is)
-                    button.HorizontalAlignment = HorizontalAlignment.Stretch;
-                    button.VerticalAlignment = VerticalAlignment.Stretch;
-                    Grid.SetRow(button, row);
-                    Grid.SetColumn(button, col);
-                    gameGrid.Children.Add(button);
-                    button.Click += Button_Click;
+                var button = new Button();
+                button.Content = $"Cell ({row},{col})"; //debugging
+                button.HorizontalAlignment = HorizontalAlignment.Stretch;
+                button.VerticalAlignment = VerticalAlignment.Stretch;
+                Grid.SetRow(button, row);
+                Grid.SetColumn(button, col);
+                gameGrid.Children.Add(button);
 
-                }
+                button.Click += Button_Click;
             }
-        }
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Button clickedButton = (Button)sender;
-
-            int column = Grid.GetColumn(clickedButton);
-
-            //Finds the lowest available row in the column
-            for (int row = 5; row >= 0; row--)
-            {
-                if (!IsCellOccupied(row, column))
-                {
-                    // Set the background color of the button
-                    SolidColorBrush colorBrush = currentPlayerIsRed ? Brushes.Red : Brushes.Blue;
-                    clickedButton.Background = colorBrush;
-
-                    // Update the game board state
-                    gameBoard[row, column] = currentPlayerIsRed ? Player.Red : Player.Blue;
-
-                    // Switch to the next player
-                    currentPlayerIsRed = !currentPlayerIsRed;
-                    break;
-                }
-            }
-        }
-
-        private bool IsCellOccupied(int row, int column)
-        {
-            //Checks if the cell at the specified row and column is occupied
-            return gameBoard[row, column] != Player.None;
         }
     }
+
+    private void Button_Click(object sender, RoutedEventArgs e)
+    {
+        var clickedButton = (Button)sender;
+        var column = Grid.GetColumn(clickedButton);
+        var row = GetLowestEmptyRow(column);
+
+        if (row == -1)
+        {
+            // Column is full, exit
+            return;
+        }
+
+        // Check if the clicked button is already colored
+        if (_gameBoard[row, column] != Player.None)
+        {
+            row = GetLowestEmptyRow(column);
+            if (row == -1)
+            {
+                return;
+            }
+        }
+
+        // Color the button at the found row and column
+        var colorBrush = _currentPlayerIsRed ? Brushes.Red : Brushes.Blue;
+
+
+        // Update the game board state
+
+
+        var lowestButton = gameGrid.Children
+            .OfType<Button>()
+            .FirstOrDefault(b => Grid.GetRow(b) == GetLowestEmptyRow(column) && Grid.GetColumn(b) == column);
+
+        if (lowestButton != null)
+        {
+            lowestButton.Background = colorBrush;
+            _gameBoard[GetLowestEmptyRow(column), column] = _currentPlayerIsRed ? Player.Red : Player.Blue;
+        }
+
+        if (CheckForConnectFourVertically(row, column))
+        {
+            Console.WriteLine("Connect Four vertically!");
+        }
+
+        // Check for Connect Four horizontally
+        if (CheckForConnectFourHorizontally(row, column))
+        {
+            Console.WriteLine("Connect Four horizontally!");
+            // Implement your logic for when a player wins horizontally
+        }
+
+        // Check for Connect Four diagonally
+        if (CheckForConnectFourDiagonally(row, column))
+        {
+            Console.WriteLine("Connect Four diagonally!");
+            // Implement your logic for when a player wins diagonally
+        }
+
+        // Switch to the next player
+        _currentPlayerIsRed = !_currentPlayerIsRed;
+    }
+
+    //for testing, this is a new function to test if the lowest row can be found in the column
+    private int GetLowestEmptyRow(int columnIndex)
+    {
+        for (var row = _gameBoard.GetLength(0) - 1; row >= 0; row--)
+        {
+            if (_gameBoard[row, columnIndex] == Player.None)
+            {
+                return row;
+            }
+        }
+
+        return -1; // Column is full
+    }
+
+    // Function to check if there's a Connect Four vertically
+    private bool CheckForConnectFourVertically(int row, int column)
+    {
+        var currentPlayer = _currentPlayerIsRed ? Player.Red : Player.Blue;
+        var count = 0;
+
+        // Check downwards
+        for (var i = row; i >= 0; i--)
+        {
+            if (_gameBoard[i, column] == currentPlayer)
+            {
+                count++;
+                if (count >= 4)
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                break;
+            }
+        }
+
+        // Check upwards
+        for (var i = row + 1; i < 6; i++)
+        {
+            if (_gameBoard[i, column] == currentPlayer)
+            {
+                count++;
+                if (count >= 4)
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                break;
+            }
+        }
+
+        return false;
+    }
+
+    // Function to check if there's a Connect Four horizontally
+    private bool CheckForConnectFourHorizontally(int row, int column)
+    {
+        var currentPlayer = _currentPlayerIsRed ? Player.Red : Player.Blue;
+        var count = 0;
+
+        // Check to the left
+        for (var i = column; i >= 0; i--)
+        {
+            if (_gameBoard[row, i] == currentPlayer)
+            {
+                count++;
+                if (count >= 4)
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                break;
+            }
+        }
+
+        // Check to the right
+        for (var i = column + 1; i < 7; i++)
+        {
+            if (_gameBoard[row, i] == currentPlayer)
+            {
+                count++;
+                if (count >= 4)
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                break;
+            }
+        }
+
+        return false;
+    }
+
+    // Function to check if there's a Connect Four diagonally
+    private bool CheckForConnectFourDiagonally(int row, int column)
+    {
+        return CheckForConnectFourDiagonallyUpward(row, column) ||
+               CheckForConnectFourDiagonallyDownward(row, column);
+    }
+
+    // Function to check if there's a Connect Four diagonally upwards
+    private bool CheckForConnectFourDiagonallyUpward(int row, int column)
+    {
+        var currentPlayer = _currentPlayerIsRed ? Player.Red : Player.Blue;
+        var count = 0;
+
+        // Check upwards diagonally
+        for (int i = row, j = column; i >= 0 && j >= 0; i--, j--)
+        {
+            if (_gameBoard[i, j] == currentPlayer)
+            {
+                count++;
+                if (count >= 4)
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                break;
+            }
+        }
+
+        // Check downwards diagonally
+        for (int i = row + 1, j = column + 1; i < 6 && j < 7; i++, j++)
+        {
+            if (_gameBoard[i, j] == currentPlayer)
+            {
+                count++;
+                if (count >= 4)
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                break;
+            }
+        }
+
+        return false;
+    }
+
+    // Function to check if there's a Connect Four diagonally downwards
+    private bool CheckForConnectFourDiagonallyDownward(int row, int column)
+    {
+        var currentPlayer = _currentPlayerIsRed ? Player.Red : Player.Blue;
+        var count = 0;
+
+        // Check upwards diagonally
+        for (int i = row, j = column; i >= 0 && j < 7; i--, j++)
+        {
+            if (_gameBoard[i, j] == currentPlayer)
+            {
+                count++;
+                if (count >= 4)
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                break;
+            }
+        }
+
+        // Check downwards diagonally
+        for (int i = row + 1, j = column - 1; i < 6 && j >= 0; i++, j--)
+        {
+            if (_gameBoard[i, j] == currentPlayer)
+            {
+                count++;
+                if (count >= 4)
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                break;
+            }
+        }
+
+        return false;
+    }
 }
+
+// note to self, the games state probably isn't checking if the button is being pressed. you can press it the maximum amount of times as the amount of columns, it might be helpful to redo it all from scratch sadly.
