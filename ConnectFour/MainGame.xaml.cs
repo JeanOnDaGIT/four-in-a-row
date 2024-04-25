@@ -7,7 +7,7 @@ using System.Windows.Media;
 namespace ConnectFour;
 public partial class MainGame
 {
-    // enum used to store player states for when there is no player and for player 1 and 2
+    //Enum used to store player states for when there is no player and for player 1 and 2
     private enum Player
     {
         None,
@@ -18,10 +18,10 @@ public partial class MainGame
     private bool _currentPlayerIsRed = true;
     private readonly Player[,] _gameBoard = new Player[6, 7];
 
+    //This entire function is used to generate the grid for the game, may be changed in time.
     public MainGame()
     {
         InitializeComponent();
-
         //Button loop to generate the grid using 6 rows and 7 columns
         for (var row = 0; row < 6; row++)
         {
@@ -40,6 +40,7 @@ public partial class MainGame
         }
     }
 
+    //This is the function for whenever you click a button on the grid, the big fucntion.
     private void Button_Click(object sender, RoutedEventArgs e)
     {
         var clickedButton = (Button)sender;
@@ -291,9 +292,6 @@ public partial class MainGame
                 break;
             }
         }
-
         return false;
     }
 }
-
-// note to self, the games state probably isn't checking if the button is being pressed. you can press it the maximum amount of times as the amount of columns, it might be helpful to redo it all from scratch sadly.
