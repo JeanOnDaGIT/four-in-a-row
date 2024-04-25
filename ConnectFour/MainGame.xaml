@@ -28,6 +28,7 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
+            <Image x:Name="Board" Source="/boardgamething.png" Stretch="Fill" Width="444" Grid.RowSpan="6" Grid.ColumnSpan="7"/>
         </Grid>
     </Grid>
 </Window>
