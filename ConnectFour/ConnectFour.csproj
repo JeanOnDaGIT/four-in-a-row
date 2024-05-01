@@ -13,6 +13,7 @@
     <None Remove="images\Illustration3.png" />
     <None Remove="images\player1.png" />
     <None Remove="images\player2.png" />
+    <None Remove="images\playercolours.png" />
     <None Remove="SAMPLE.png" />
   </ItemGroup>
 
@@ -22,6 +23,7 @@
     <Resource Include="images\Illustration3.png" />
     <Resource Include="images\player1.png" />
     <Resource Include="images\player2.png" />
+    <Resource Include="images\playercolours.png" />
   </ItemGroup>
 
 </Project>

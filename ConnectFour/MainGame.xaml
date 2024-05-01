@@ -37,5 +37,6 @@
         </Grid>
         <Image Margin="24,11,552,232" Source="/images/player1.png" Stretch="Fill" Visibility="Hidden"/>
         <Image Margin="24,222,541,10" Source="/images/player2.png" Stretch="Fill" Visibility="Hidden"/>
+        <Image Margin="51,17,520,16" Source="/images/playercolours.png" Stretch="Fill"/>
     </Grid>
 </Window>
