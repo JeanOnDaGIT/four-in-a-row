@@ -43,7 +43,7 @@ namespace ConnectFour
                 for (var col = 0; col < 7; col++)
                 {
                     var button = new Button();
-                    button.Content = $"Cell ({row},{col})"; //debugging
+                    //button.Content = $"Cell ({row},{col})"; //debugging
                     button.HorizontalAlignment = HorizontalAlignment.Stretch;
                     button.VerticalAlignment = VerticalAlignment.Stretch;
                     Grid.SetRow(button, row);

@@ -34,7 +34,8 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Image x:Name="Board" Source="/boardgamething.png" Stretch="Fill" Width="444" Grid.RowSpan="6" Grid.ColumnSpan="7" Visibility="Hidden"/>
         </Grid>
+        <Image Margin="24,11,552,232" Source="/images/player1.png" Stretch="Fill" Visibility="Hidden"/>
+        <Image Margin="24,222,541,10" Source="/images/player2.png" Stretch="Fill" Visibility="Hidden"/>
     </Grid>
 </Window>

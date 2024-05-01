@@ -33,7 +33,11 @@ namespace ConnectFour
 
         private void Inst_Click(object sender, RoutedEventArgs e)
         {
-
+            MessageBox.Show("How to Play:" + Environment.NewLine +
+                "- Players start by placing counters" + Environment.NewLine +
+                "- Make 4 in a row to win (across, diagnoally or upwards)" + Environment.NewLine +
+                "- Use your tokens to successfully block your opponent from winning" + Environment.NewLine +
+                "Enjoy!");
         }
 
         private void Quit_Click(object sender, RoutedEventArgs e)

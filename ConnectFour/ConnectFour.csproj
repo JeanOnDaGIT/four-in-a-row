@@ -9,13 +9,19 @@
 
   <ItemGroup>
     <None Remove="Illustration3.png" />
+    <None Remove="images\boardgamething.png" />
     <None Remove="images\Illustration3.png" />
+    <None Remove="images\player1.png" />
+    <None Remove="images\player2.png" />
     <None Remove="SAMPLE.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Illustration3.png" />
+    <Resource Include="images\boardgamething.png" />
     <Resource Include="images\Illustration3.png" />
+    <Resource Include="images\player1.png" />
+    <Resource Include="images\player2.png" />
   </ItemGroup>
 
 </Project>
