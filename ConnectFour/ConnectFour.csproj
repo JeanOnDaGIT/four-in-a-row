@@ -8,11 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Illustration3.png" />
+    <None Remove="images\Illustration3.png" />
     <None Remove="SAMPLE.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="SAMPLE.png" />
+    <Resource Include="Illustration3.png" />
+    <Resource Include="images\Illustration3.png" />
   </ItemGroup>
 
 </Project>
