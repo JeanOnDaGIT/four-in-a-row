@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -94,6 +95,8 @@ namespace ConnectFour
             // Check for win condition
             if (CheckForWin(row, column))
             {
+                
+                MessageBox.Show($"Player {(_currentPlayerIsRed ? Player.Red : Player.Blue)} has won!");
                 Console.WriteLine("Game Over!");
                 ReturnToMainMenu(); // Call ReturnToMainMenu when a win condition is met
                 return; // Exit the Button_Click method

@@ -33,7 +33,7 @@ namespace ConnectFour
 
         private void Inst_Click(object sender, RoutedEventArgs e)
         {
-            Window MainGame = new MainGame();
+
         }
 
         private void Quit_Click(object sender, RoutedEventArgs e)
